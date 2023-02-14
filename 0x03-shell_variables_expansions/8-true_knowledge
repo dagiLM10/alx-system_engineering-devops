@@ -1,2 +1,2 @@
 #!/bin/basH
-echo $(($POWER/$DIVIDE))
+echo $((TRUEKNOWLEDGE+128))
