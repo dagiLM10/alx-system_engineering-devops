@@ -13,10 +13,10 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         if re.fullmatch(r'\d+', sys.argv[1]):
             id = int(sys.argv[1])
-            req = request.get('{}/user/{}'.format(REST_API, id)).json()
+            req = requests.get('{}/user/{}'.format(REST_API, id)).json()
             task_req = requests.get('{}/todos'.format(REST_API)).json()
             emp_name = req.get('name')
-            tasks = list(filter(lambda x: x.get(userId) == id, task_req))
+            tasks = list(filter(lambda x: x.get('userId') == id, task_req))
             completed_tasks = list(filter(lambda x: x.get('user.Id') == id, task_req))
             print(
                 'Employee {} is done with tasks({}/{}):'.format(
@@ -25,6 +25,6 @@ if __name__ == '__main__':
                 len(tasks)
                 )
             )
-            if len(complete_tasks) > 0:
+            if len(completed_tasks) > 0:
                 for task in completed_tasks:
                     print('\t {}'.format(task.get('title')))
