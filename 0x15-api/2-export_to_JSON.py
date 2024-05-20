@@ -18,13 +18,13 @@ if __name__ == '__main__':
     task = res.json()
 
     dict_data = {USER_ID: []}
-    for task in tasks:
+    for task in task:
         TASK_COMPLETED_STATUS = task.get('completed')
         TASK_TITLE = task.get('title')
         dict_data[USER_ID].append({
                                     "task": TASK_TITLE,
                                     "completed": TASK_COMPLETED_STATUS,
-                                    "username": USERNAME))
+                                    "username": USERNAME})
     """print(dict_data)"""
     with open('{}.json'.format(USER_ID), 'w') as f:
         json.dump(dict_data, f)
