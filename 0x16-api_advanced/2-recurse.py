@@ -40,6 +40,7 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     # Send a GET request to the subreddit's hot posts page
     response = requests.get(url, headers=headers, params=params,
                             allow_redirects=False)
+    response.raise_for_status()
 
     # Check if the response status code indicates a not-found error (404)
     if response.status_code == 404:
